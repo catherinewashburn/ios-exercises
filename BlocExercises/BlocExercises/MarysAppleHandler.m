@@ -15,6 +15,18 @@
 
     /* WORK HERE */
     
+    if (dollars >= 1000000000) {
+        itemToReturn = @"have The Big Apple";
+    } else if (dollars >=1000) {
+        itemToReturn = @"have an Apple computer";
+    } else if (dollars >=6) {
+        itemToReturn = @"have an apple";
+    } else if (dollars >=5) {
+        itemToReturn = @"have some gum";
+    } else {
+        itemToReturn = @"get out of my store";
+    }
+
     NSLog(@"For $%ld, Mary can: %@", (long)dollars, itemToReturn);
     return itemToReturn;
 }
@@ -22,11 +34,10 @@
 - (NSUInteger) dollarCostForAppleFlavoredVodka {
     /* WORK HERE */
 
-    NSUInteger cost = 24;
+    NSInteger regCost = 24;
+    NSInteger discountCost = regCost * 0.75;
     
-    if (self.getsDiscount) {
-        cost *= .75;
-    }
+    NSInteger cost = (self.getsDiscount) ? discountCost:regCost;
     
     return cost;
 }
