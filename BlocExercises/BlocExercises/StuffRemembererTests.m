@@ -23,7 +23,7 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     
     self.rememberer = [[StuffRememberer alloc] init];
-}
+ }
 
 - (void)tearDown
 {
@@ -37,6 +37,7 @@
     [self.rememberer rememberThisArrayForLater:someArray];
     NSMutableArray *otherArray = [self.rememberer arrayYouShouldRemember];
     XCTAssertEqual(someArray, otherArray, @"These aren't the same array.");
+    
 }
 
 - (void)testThatArrayIsCopied
