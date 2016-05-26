@@ -8,7 +8,7 @@ Strings
 
 func favoriteCheeseStringWithCheese(cheese: String) -> String {
     // WORK HERE
-    return cheese
+    return "My favorite cheese is " + cheese + "."
 }
 
 let fullSentence = favoriteCheeseStringWithCheese("cheddar")
@@ -20,13 +20,16 @@ Arrays & Dictionaries
 
 */
 
-let numberArray = [1, 2, 3, 4]
+var numberArray = [1, 2, 3, 4]
 // Add 5 to this array
 // WORK HERE
+numberArray.append(5)
 
-let numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
+var numberDictionary = [1 : "one", 2 : "two", 3 : "three", 4 : "four"]
 // Add 5 : "five" to this dictionary
 // WORK HERE
+numberDictionary[5] = "five"
+numberDictionary
 
 /*
 
@@ -36,9 +39,19 @@ Loops
 
 // Use a closed range loop to print 1 - 10, inclusively
 // WORK HERE
+var numberRange = ""
+for number in 1...10 {
+    numberRange = numberRange + String(number)
+}
+numberRange
 
 // Use a half-closed range loop to print 1 - 10, inclusively
 // WORK HERE
+var numberRange2 = ""
+for number in 1..<11 {
+    numberRange2 = numberRange2 + String(number)
+}
+numberRange2
 
 let worf = [
     "name": "Worf",
@@ -58,7 +71,13 @@ let characters = [worf, picard]
 func favoriteDrinksArrayForCharacters(characters:[[String : String]]) -> [String] {
     // return an array of favorite drinks, like ["prune juice", "tea, Earl Grey, hot"]
     // WORK HERE
-    return []
+    var favoriteDrinks = [String]()
+    for character in characters {
+        if let drink = character["favorite drink"]{
+            favoriteDrinks.append(drink)
+        }
+    }
+    return favoriteDrinks
 }
 
 let favoriteDrinks = favoriteDrinksArrayForCharacters(characters)
@@ -73,9 +92,14 @@ Optionals
 
 func emailFromUserDict(userDict : [String : String]) -> String {
     // Return the user's email address from userDict, or return "" if they don't have one
-    
     // WORK HERE
-    return "user@example.com"
+    var userEmail : String
+    if userDict["email"] != nil{
+        userEmail = userDict["email"]!
+    } else {
+        userEmail = ""
+    }
+    return userEmail
 }
 
 
@@ -101,6 +125,17 @@ let strings = ["milk", "eggs", "bread", "challah"]
 
 // WORK HERE - make your function and pass `strings` in
 
+func arrayToString(stringArray:[String]) -> String {
+    var newString = String ()
+    for item in stringArray {
+        newString = newString + item + ";"
+    }
+    newString.removeAtIndex(newString.endIndex.predecessor())
+    return newString
+}
+
+arrayToString(strings)
+
 let expectedOutput = "milk;eggs;bread;challah"
 
 /*
@@ -113,3 +148,7 @@ let cerealArray = ["Golden Grahams", "Cheerios", "Trix", "Cap'n Crunch OOPS! All
 
 // Use a closure to sort this array alphabetically
 // WORK HERE
+
+var cerealSorted = cerealArray.sort()
+cerealSorted
+
